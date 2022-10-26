@@ -15,9 +15,9 @@ public class CoffeeController {
     private CoffeeService coffeeService;
 
     @PostMapping
-    public ResponseEntity registration(@RequestBody CoffeeEntity cofee) {
+    public ResponseEntity registration(@RequestBody CoffeeEntity coffee) {
         try {
-            cofeeService.registration(cofee;
+            cofeeService.registration(coffee);
             return ResponseEntity.ok("Кофе успешно добавлен");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Произошла ошибка");
