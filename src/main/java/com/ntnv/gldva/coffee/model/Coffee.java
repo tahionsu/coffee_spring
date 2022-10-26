@@ -1,13 +1,13 @@
 package com.ntnv.gldva.coffee.model;
 
-import com.ntnv.gldva.coffee.CoffeeEntity;
+import com.ntnv.gldva.coffee.entity.CoffeeEntity;
 
 public class Coffee {
     private Integer id;
     private String name;
     private String description;
 
-    public static Coffee toModel(CofeeEntity coffee) {
+    public static Coffee toModel(CoffeeEntity coffee) {
         Coffee model = new Coffee();
         model.setId(coffee.getId());
         model.setName(coffee.getName());

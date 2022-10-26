@@ -1,6 +1,8 @@
 package com.ntnv.gldva.coffee.service;
 
 import com.ntnv.gldva.coffee.repository.CoffeeRepo;
+import com.ntnv.gldva.coffee.model.Coffee;
+import com.ntnv.gldva.coffee.exception.CoffeeNotFoundException;
 import com.ntnv.gldva.coffee.entity.CoffeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

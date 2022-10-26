@@ -1,8 +1,7 @@
 package com.ntnv.gldva.coffee.controller;
 
-import com.ntnv.gldva.coffee.CoffeeEntity;
-import com.ntnv.gldva.coffee.CoffeeRepo;
-import com.ntnv.gldva.coffee.Coffeeervice;
+import com.ntnv.gldva.coffee.entity.CoffeeEntity;
+import com.ntnv.gldva.coffee.service.CoffeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ public class CoffeeController {
     @PostMapping
     public ResponseEntity registration(@RequestBody CoffeeEntity coffee) {
         try {
-            cofeeService.registration(coffee);
+            coffeeService.registration(coffee);
             return ResponseEntity.ok("Кофе успешно добавлен");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Произошла ошибка");
