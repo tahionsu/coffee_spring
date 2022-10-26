@@ -4,5 +4,5 @@ import com.ntnv.gldva.coffee.entity.CoffeeEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CoffeeRepo extends CrudRepository<CoffeeEntity, Integer> {
-    CoffeeEntity findByUsername(String name);
+    CoffeeEntity findByName(String name);
 }
