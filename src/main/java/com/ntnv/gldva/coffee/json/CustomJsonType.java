@@ -41,7 +41,7 @@ public class CustomJsonType implements UserType {
             return null;
         }
         try {
-            final ObjectMapper mapper = new ObjectMapper();
+            final ObjectMapper mapper = new ObjectMapper(); // ObjectMapper thread safe, конфигурация у тебя дефолтная - в этом случае можно для оптимизации вынести его как final static
             return mapper.readValue(cellContent.getBytes("UTF-8"), returnedClass());
         } catch (final Exception ex) {
             throw new RuntimeException("Failed to convert String to Invoice: " + ex.getMessage(), ex);
@@ -56,6 +56,9 @@ public class CustomJsonType implements UserType {
         }
         try {
             final ObjectMapper mapper = new ObjectMapper();
+
+            // Все объекты классов, которые реализуют интерфейс Closeable, обязательно должны вызывать close, иначе может память потечь
+            // Подробнее расскажу на лекциях, чтобы не ждать - почитай про try with resources
             final StringWriter w = new StringWriter();
             mapper.writeValue(w, o);
             w.flush();
@@ -73,7 +76,7 @@ public class CustomJsonType implements UserType {
             ObjectOutputStream oos = new ObjectOutputStream(bos);
             oos.writeObject(o);
             oos.flush();
-            oos.close();
+            oos.close(); // если будет исключение до одног из этих close - ресурс не закроется -> утечка памяти. Используй try with resources
             bos.close();
 
             ByteArrayInputStream bais = new ByteArrayInputStream(bos.toByteArray());
