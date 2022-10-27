@@ -1,6 +1,10 @@
 package com.ntnv.gldva.coffee.entity;
 
+import com.ntnv.gldva.coffee.json.CustomJSON;
 import javax.persistence.*;
+
+import com.ntnv.gldva.coffee.json.CustomJsonType;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "coffee")
@@ -9,7 +13,8 @@ public class CoffeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String description;
+    @Type(CustomJsonType)
+    private CustomJSON description;
 
     public CoffeeEntity() {
     }
@@ -30,11 +35,11 @@ public class CoffeeEntity {
         this.id = id;
     }
 
-    public String getDescription() {
+    public CustomJSON getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(CustomJSON description) {
         this.description = description;
     }
 }
