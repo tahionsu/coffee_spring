@@ -25,6 +25,10 @@ public class CoffeeService {
         return Coffee.toModel(coffee);
     }
 
+    public Iterable<CoffeeEntity> getAll() {
+        return coffeeRepo.findAll();
+    }
+
     public Integer delete(Integer id) {
         coffeeRepo.deleteById(id);
         return id;

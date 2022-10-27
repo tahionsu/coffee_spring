@@ -24,7 +24,16 @@ public class CoffeeController {
     }
 
     @GetMapping
-    public ResponseEntity getOneUser(@RequestParam Integer id) {
+    public ResponseEntity getAllCoffees() {
+        try {
+            return ResponseEntity.ok(coffeeService.getAll());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
+    }
+
+    @GetMapping("/")
+    public ResponseEntity getOneCoffee(@RequestParam Integer id) {
         try {
             return ResponseEntity.ok(coffeeService.getOne(id));
         } catch (Exception e) {
@@ -33,7 +42,7 @@ public class CoffeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteUser(@PathVariable Integer id) {
+    public ResponseEntity deleteCoffee(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(coffeeService.delete(id));
         } catch (Exception e) {
