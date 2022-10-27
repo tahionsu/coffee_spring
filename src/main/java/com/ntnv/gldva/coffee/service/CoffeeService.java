@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CoffeeService {
 
-    @Autowired
+    @Autowired // Красивее иньекция через конструктор
     private CoffeeRepo coffeeRepo;
 
     public CoffeeEntity registration(CoffeeEntity coffee) {

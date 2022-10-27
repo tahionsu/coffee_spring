@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/coffee")
 public class CoffeeController {
 
-    @Autowired
+//    @Autowired - правильным считается использовать иньекцию через конструктор. Если через поле, особенно приватное - то хрен протестируешь код
     private CoffeeService coffeeService;
+
+    //Autowired можно и не указывать, но для визуального эффекта я оставляю
+    public CoffeeController(@Autowired CoffeeService coffeeService) {
+        this.coffeeService = coffeeService;
+    }
 
     @PostMapping
     public ResponseEntity registration(@RequestBody CoffeeEntity coffee) {

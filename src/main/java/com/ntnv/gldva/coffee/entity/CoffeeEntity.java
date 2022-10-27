@@ -45,4 +45,9 @@ public class CoffeeEntity {
     public void setDescription(CustomJSON description) {
         this.description = description;
     }
+
+    /*
+    Для ентити классов очень желательно переопределять hash и eqals методы, иначе могут повылазить неприятные баги.
+    Но по ним есть нюансы - погугли, основное расскажу на лекциях.
+    */
 }
