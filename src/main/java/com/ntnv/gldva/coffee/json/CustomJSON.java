@@ -3,23 +3,23 @@ package com.ntnv.gldva.coffee.json;
 import java.io.Serializable;
 
 public class CustomJSON implements Serializable {
-    private String stringProp;
+    private String scoreSCA;
 
-    private Long longProp;
+    private String grind;
 
-    public String getStringProp() {
-        return stringProp;
+    public String getScoreSCA() {
+        return scoreSCA;
     }
 
-    public void setStringProp(String stringProp) {
-        this.stringProp = stringProp;
+    public void setScoreSCA(String score) {
+        this.scoreSCA = score;
     }
 
-    public Long getLongProp() {
-        return longProp;
+    public String getGrind() {
+        return grind;
     }
 
-    public void setLongProp(Long longProp) {
-        this.longProp = longProp;
+    public void setGrind(String grind) {
+        this.grind = grind;
     }
 }

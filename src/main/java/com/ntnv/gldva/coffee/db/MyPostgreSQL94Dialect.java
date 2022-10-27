@@ -1,2 +1,12 @@
-package com.ntnv.gldva.coffee.db;public class MyPostgreSQL94Dialect {
+package com.ntnv.gldva.coffee.db;
+
+import org.hibernate.dialect.PostgreSQL94Dialect;
+
+import java.sql.Types;
+
+public class MyPostgreSQL94Dialect extends PostgreSQL94Dialect {
+
+    public MyPostgreSQL94Dialect() {
+        this.registerColumnType(Types.JAVA_OBJECT, "jsonb");
+    }
 }

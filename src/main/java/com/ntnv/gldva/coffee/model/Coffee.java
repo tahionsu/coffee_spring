@@ -1,11 +1,12 @@
 package com.ntnv.gldva.coffee.model;
 
 import com.ntnv.gldva.coffee.entity.CoffeeEntity;
+import com.ntnv.gldva.coffee.json.CustomJSON;
 
 public class Coffee {
     private Integer id;
     private String name;
-    private String description;
+    private CustomJSON description;
 
     public static Coffee toModel(CoffeeEntity coffee) {
         Coffee model = new Coffee();
@@ -34,11 +35,11 @@ public class Coffee {
         this.name = name;
     }
 
-    public String getDescription() {
+    public CustomJSON getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(CustomJSON description) {
         this.description = description;
     }
 }

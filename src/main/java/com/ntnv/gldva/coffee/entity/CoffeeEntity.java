@@ -1,10 +1,9 @@
 package com.ntnv.gldva.coffee.entity;
 
 import com.ntnv.gldva.coffee.json.CustomJSON;
-import javax.persistence.*;
-
-import com.ntnv.gldva.coffee.json.CustomJsonType;
 import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "coffee")
@@ -13,7 +12,11 @@ public class CoffeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @Type(CustomJsonType)
+
+    /* Для hibernate 6 возможно использование аннотации  @JdbcTypeCode(SqlTypes.JSON)
+       Однако у меня 5 версия, в такой ситуации нужно писать mapping */
+    @Type(type="CustomJsonType")        
+
     private CustomJSON description;
 
     public CoffeeEntity() {
