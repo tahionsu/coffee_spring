@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CoffeeService {
 
-    @Autowired
     private CoffeeRepo coffeeRepo;
+
+    public CoffeeService(@Autowired CoffeeRepo coffeeRepo) {
+        this.coffeeRepo = coffeeRepo;
+    }
 
     public CoffeeEntity registration(CoffeeEntity coffee) {
         return coffeeRepo.save(coffee);
@@ -19,7 +22,7 @@ public class CoffeeService {
 
     public Coffee getOne(Integer id) throws CoffeeNotFoundException {
         CoffeeEntity coffee = coffeeRepo.findById(id).get();
-        if (coffee == null) {
+        if (coffee.getId() != id) {
             throw new CoffeeNotFoundException("Кофе не найден");
         }
         return Coffee.toModel(coffee);

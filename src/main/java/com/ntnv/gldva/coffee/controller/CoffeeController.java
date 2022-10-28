@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/coffee")
 public class CoffeeController {
 
-    @Autowired
     private CoffeeService coffeeService;
+
+    public CoffeeController(@Autowired CoffeeService coffeeService) {
+        this.coffeeService = coffeeService;
+    }
 
     @PostMapping
     public ResponseEntity registration(@RequestBody CoffeeEntity coffee) {

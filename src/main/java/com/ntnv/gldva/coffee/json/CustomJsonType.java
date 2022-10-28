@@ -67,15 +67,11 @@ public class CustomJsonType implements UserType {
 
     @Override
     public Object deepCopy(Object o) throws HibernateException {
-        try {
-            // use serialization to create a deep copy
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
+             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+
             oos.writeObject(o);
             oos.flush();
-            oos.close();
-            bos.close();
-
             ByteArrayInputStream bais = new ByteArrayInputStream(bos.toByteArray());
             Object obj = new ObjectInputStream(bais).readObject();
             bais.close();
