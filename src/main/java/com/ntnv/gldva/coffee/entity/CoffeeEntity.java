@@ -14,7 +14,7 @@ public class CoffeeEntity {
     private Integer id;
     private String name;
 
-    @Type(type="CustomJsonType")        
+    @Type(type = "CustomJsonType")
 
     private CustomJSON description;
 
