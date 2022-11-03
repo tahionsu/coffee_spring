@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/coffee")
 public class CoffeeController {
-
     private CoffeeService coffeeService;
-
     public CoffeeController(@Autowired CoffeeService coffeeService) {
         this.coffeeService = coffeeService;
     }
-
     @PostMapping
     public ResponseEntity registration(@RequestBody CoffeeEntity coffee) {
         try {
@@ -25,7 +22,6 @@ public class CoffeeController {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }
     }
-
     @GetMapping
     public ResponseEntity getAllCoffees() {
         try {
@@ -34,7 +30,6 @@ public class CoffeeController {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }
     }
-
     @GetMapping("/")
     public ResponseEntity getOneCoffee(@RequestParam Integer id) {
         try {
@@ -43,7 +38,6 @@ public class CoffeeController {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCoffee(@PathVariable Integer id) {
         try {

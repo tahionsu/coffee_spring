@@ -15,7 +15,6 @@ public class CoffeeEntity {
     private String name;
 
     @Type(type = "CustomJsonType")
-
     private CustomJSON description;
 
     public CoffeeEntity() {
