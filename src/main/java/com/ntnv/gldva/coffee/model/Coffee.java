@@ -2,7 +2,9 @@ package com.ntnv.gldva.coffee.model;
 
 import com.ntnv.gldva.coffee.entity.CoffeeEntity;
 import com.ntnv.gldva.coffee.json.CustomJSON;
+import lombok.Data;
 
+@Data
 public class Coffee {
     private Integer id;
     private String name;
@@ -19,28 +21,5 @@ public class Coffee {
     public Coffee() {
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public CustomJSON getDescription() {
-        return description;
-    }
-
-    public void setDescription(CustomJSON description) {
-        this.description = description;
-    }
 }
 

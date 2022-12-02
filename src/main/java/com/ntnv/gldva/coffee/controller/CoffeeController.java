@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/coffee")
 public class CoffeeController {
-    private CoffeeService coffeeService;
+    private final CoffeeService coffeeService;
     public CoffeeController(@Autowired CoffeeService coffeeService) {
         this.coffeeService = coffeeService;
     }
     @PostMapping
-    public ResponseEntity registration(@RequestBody CoffeeEntity coffee) {
+    public ResponseEntity<?> registration(@RequestBody CoffeeEntity coffee) {
         try {
             coffeeService.registration(coffee);
             return ResponseEntity.ok("Кофе успешно добавлен");
@@ -23,7 +23,7 @@ public class CoffeeController {
         }
     }
     @GetMapping
-    public ResponseEntity getAllCoffees() {
+    public ResponseEntity<?> getAllCoffees() {
         try {
             return ResponseEntity.ok(coffeeService.getAll());
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class CoffeeController {
         }
     }
     @GetMapping("/")
-    public ResponseEntity getOneCoffee(@RequestParam Integer id) {
+    public ResponseEntity<?> getOneCoffee(@RequestParam Integer id) {
         try {
             return ResponseEntity.ok(coffeeService.getOne(id));
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class CoffeeController {
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteCoffee(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteCoffee(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(coffeeService.delete(id));
         } catch (Exception e) {
